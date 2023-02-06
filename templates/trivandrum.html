@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ernakulam District Branches</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<style>
+		.card-title{
+		color : white;
+		font-size : 50px;
+		-webkit-text-stroke-width : 1px;
+		-webkit-text-stroke-color : black;
+		}
+	</style>
+		<link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/superfish.css' %}">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="{% static 'js/slider/flexslider.css' %}">
+<link rel="stylesheet" href="{% static 'js/slider/flexcar.css' %}">
+<link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,300|Droid+Serif:400,300' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
+<script>
+Modernizr.load({
+    // test if browser understands media queries
+    test: Modernizr.mq('only all'),
+    // if not load ie8-grid
+    nope: 'css/ie8-grid-foundation-4.css'
+});
+</script>
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="{% static 'css/ie-fixes.css' %}">
+<![endif]-->
+</head>
+<body>
+<div class="cointainer">
+  <div class="header">
+    <div class="row">
+      <div class="columns large-12  header-inner"> <a href="index.html"><img src="{% static 'images/logo.png' %}" alt="" class="logo"></a> </div>
+      <div class="columns large-12">
+        <nav>
+          <section>
+            <ul class="sf-menu large-12">
+              <li class="active"><a href="{% url 'banksite_app:Home' %}">Home</a></li>
+              <li class="has-dropdown"><a href="{% url 'banksite_app:Home' %}">Branches</a>
+                <ul class="dropdown">
+                  <li class="has-dropdown"><a href="{% url 'branch_app:tsr_branch' %}">Thrissur</a></li>
+                  <li><a href="{% url 'branch_app:ekm_branch' %}">Ernakulam</a></li>
+                  <li><a href="{% url 'branch_app:ktm_branch' %}">Kottayam</a></li>
+                  <li><a href="{% url 'branch_app:tvm_branch' %}">Trivandrum</a></li>
+                  <li><a href="{% url 'branch_app:klm_branch' %}">Kollam</a></li>
+                </ul>
+              </li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'credentials:logout' %}">Logout</a></li>
+              <li><a href="{% url 'banksite_app:person_add' %}">Application</a></li>
+              {% else %}
+              <li><a href="{% url 'credentials:login' %}">Login</a></li>
+              <li><a href="{% url 'credentials:register' %}">Register</a></li>
+              {% endif %}
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+<div class="container-lg">
+	<div class="row mb-3">
+		<div class="col-md-12">
+			<div class="card bg-dark text-white" style=" height: 20rem;">
+			  <img class="card-img" style="height: 20rem;" src="{% static 'images/tvm.jpg' %}" alt="Card image">
+			  <div class="card-img-overlay">
+				<h5 class="card-title">DreamBank Trivandrum</h5>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		{% for i in tvm %}
+		<div class="col-md-3">
+			<div class="card border-primary" style="width: 17rem; height: 25rem;">
+				<div class="card-header" style="height: 5rem;" >
+					<h5>DreamBank Branch, {{i.branch_name}}</h5>
+				</div>
+				<div class="card-body">
+					<table>
+						<tr>
+							<td>ID</td>
+							<td>	: {{i.branchid}}</td>
+						</tr>
+						<tr>
+							<td>IFSC</td>
+							<td>	: {{i.ifsc}}</td>
+						</tr>
+						<tr style="height:120px">
+							<td style="vertical-align:top">Address</td>
+							<td style="vertical-align:top">	: {{i.address}}</td>
+						</tr>
+						<tr>
+							<td>Hours</td>
+							<td>	: {{i.hours}}</td>
+						</tr>
+						<tr>
+							<td>Contact</td>
+							<td>	: {{i.contact}}</td>
+						</tr>
+						<tr>
+							<td>Pincode</td>
+							<td>	: {{i.pincode}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<br>
+<footer class="footer">
+      <div class="row">
+        <div class="columns large-12 footer-inner">
+          <div class="row">
+            <div class="columns large-3 box">
+              <div class="">
+                <h2 class="footer-title">Resources</h2>
+                <ul>
+                  <li><a href="index.html">home</a></li>
+                  <li><a href="gallery.html">gallery</a></li>
+                  <li><a href="#">faqs</a></li>
+                  <li><a href="contact.html">contact us</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="blog.html">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">links </h2>
+                <ul>
+                  <li><a href="index.html">home</a></li>
+                  <li><a href="gallery.html">gallery</a></li>
+                  <li><a href="#">faqs</a></li>
+                  <li><a href="contact.html">contact us</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="blog.html">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">follow us</h2>
+                <ul>
+                  <li><a href="#" class="media tweeter"></a>Follow us on twitter</li>
+                  <li><a href="#" class="media youtube"></a>Follow us on youtube</li>
+                  <li><a href="#" class="media facebook"></a>Follow us on facebook</li>
+                  <li><a href="#" class="media gmail"></a>Follow us on google plus</li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">Contact us</h2>
+                <p>255, Willson Street,Caulfield, 122211, Melbourne</p>
+                <p><b>Tel:</b> (122)3456789, (121)3456079, (121)2341234</p>
+                <p><b>Fax:</b> (121)5647289, (122)34526589</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="credit-row">
+      <div class="row">
+        <div class="columns large-11 credit">&copy; 2045 All rights reserved by <a href="#">DreamzBank.</a> Design by: <a href="http://topwebsitetemplates.org">topwebsitetemplates.org</a></div>
+        <div class="columns large-1"><img src="{% static 'images/toparrow.png' %}" alt="" class="scrollToTop"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/superfish.js' %}"></script>
+<script src="{% static 'js/slider/jquery.flexslider.js' %}"></script>
+<script>
+Modernizr.load({
+    test: Modernizr.placeholder,
+    nope: 'js/placeholder.min.js'
+});
+
+function goToNewPage() {
+    if (document.getElementById('target').value) {
+        window.location.href = document.getElementById('target').value;
+    }
+}
+</script>
+<script>
+$(document).ready(function () {
+    $('ul.sf-menu').superfish({
+        animation: {
+            height: 'show'
+        },
+        delay: 400
+    });
+    $("img.scrollToTop").click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, "slow");
+    });
+    $('.flexslider').flexslider();
+    $('.flexcar').flexslider();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+<head>
+<title>Home Page</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/superfish.css' %}">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="{% static 'js/slider/flexslider.css' %}">
+<link rel="stylesheet" href="{% static 'js/slider/flexcar.css' %}">
+<link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,300|Droid+Serif:400,300' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
+<script>
+Modernizr.load({
+    // test if browser understands media queries
+    test: Modernizr.mq('only all'),
+    // if not load ie8-grid
+    nope: 'css/ie8-grid-foundation-4.css'
+});
+</script>
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="{% static 'css/ie-fixes.css' %}">
+<![endif]-->
+</head>
+<body>
+<div class="cointainer">
+  <div class="header">
+    <div class="row">
+      <div class="columns large-12  header-inner"> <a href="index.html"><img src="{% static 'images/logo.png' %}" alt="" class="logo"></a> </div>
+      <div class="columns large-12">
+        <nav>
+          <section>
+            <ul class="sf-menu large-12">
+              <li class="active"><a href="{% url 'banksite_app:Home' %}"><img src="{% static 'images/house.svg' %}" style="width:22px;height:22px;"> Home</a></li>
+              <li class="has-dropdown"><a href="{% url 'banksite_app:Home' %}">Branches</a>
+                <ul class="dropdown">
+                  <li class="has-dropdown"><a href="{% url 'branch_app:tsr_branch' %}">Thrissur</a></li>
+                  <li><a href="{% url 'branch_app:ekm_branch' %}">Ernakulam</a></li>
+                  <li><a href="{% url 'branch_app:ktm_branch' %}">Kottayam</a></li>
+                  <li><a href="{% url 'branch_app:tvm_branch' %}">Trivandrum</a></li>
+                  <li><a href="{% url 'branch_app:klm_branch' %}">Kollam</a></li>
+                </ul>
+              </li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'credentials:logout' %}">Logout</a></li>
+              <li><a href="{% url 'banksite_app:person_add' %}">Application</a></li>
+              {% else %}
+              <li><a href="{% url 'credentials:login' %}">Login</a></li>
+              <li><a href="{% url 'credentials:register' %}">Register</a></li>
+              {% endif %}
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+    </div>
+    <div class="slider">
+      <div class="row">
+        <div class="columns large-12">
+          <div class="row flexslider-row">
+            <div class="columns large-12">
+              <div class="flexslider">
+                <ul class="slides">
+                  <li><img src="{% static 'images/slides1.jpg' %}" alt=""></li>
+                  <li><img src="{% static 'images/slides2.jpg' %}" alt=""></li>
+                  <li><img src="{% static 'images/slides3.jpg' %}" alt=""></li>
+                  <li><img src="{% static 'images/slides4.jpg' %}" alt=""></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tagline-row">
+      <div class="row tagline">
+        <div class="columns large-12">
+          <h2 class="center">Tincidunt. ac urna urna facilisis etiam platea ac phasellus vut pulvinar dolor porta augue montes odio dapibus elementum augue ultricies quis.</h2>
+        </div>
+      </div>
+    </div>
+    <div class="service-box">
+      <div class="row service">
+        <div class="columns large-4">
+          <div class="box">
+            <p><img src="{% static 'images/threeups1.jpg' %}" alt="" class="service-img"></p>
+            <h1>ERNAKULAM BRANCH</h1>
+            <p>cum magna diam Duis amagna augue natoque odion nisi sed magna nascetur turpis inet sed parturient cum velit lacus Magna facilisis et cursus montes Turpisinet magnis parturient turpis magna turpis habitasse integ ultricies odion adipiscing eros nisi nunc aliquet lorem ipsum sites dolor esme turpis magna augue odio nisi phasellus pulvinar </p>
+          </div>
+        </div>
+        <div class="columns large-4">
+          <div class="box">
+            <p><img src="{% static 'images/threeups2.jpg' %}" alt="" class="service-img"></p>
+            <h1>TRIVANDRUM BRANCH</h1>
+            <p>cum magna diam Duis amagna augue natoque odion nisi sed magna nascetur turpis inet sed parturient cum velit lacus Magna facilisis et cursus montes Turpisinet magnis parturient turpis magna turpis habitasse integ ultricies odion adipiscing eros nisi nunc aliquet lorem ipsum sites dolor esme turpis magna augue odio nisi phasellus pulvinar </p>
+          </div>
+        </div>
+        <div class="columns large-4">
+          <div class="box">
+            <p><img src="{% static 'images/threeups3.jpg' %}" alt="" class="service-img"></p>
+            <h1>THRISSUR BRANCH</h1>
+            <p>cum magna diam Duis amagna augue natoque odion nisi sed magna nascetur turpis inet sed parturient cum velit lacus Magna facilisis et cursus montes Turpisinet magnis parturient turpis magna turpis habitasse integ ultricies odion adipiscing eros nisi nunc aliquet lorem ipsum sites dolor esme turpis magna augue odio nisi phasellus pulvinar </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-row">
+      <div class="row">
+        <div class="columns large-11">
+          <div class="testimonial flexcar">
+            <ul class="slides">
+              <li>
+                <p>Tincidunt. Ac urna urna facilisis etiam platea ac, phasellus, vut pulvinar? Dolor! Porta augue. Montes odio dapibus Elementum augue ultricies quis ridiculus aliquam vut, dis nunc diam! Arcu aliquet odio in. Eu sed et mauris tincidunt. Ultricies. Massa egestas, odio et arcu egestas egestas integer, urna cras nunc egestas, lorem no Facilisis enim cum nascetur placerat magna magna cursus natoque velit porttitor turpis rcu ac vel natoque enim dictumst urna phasellus tincidunt aliquet Tincidunt urna urna facilisis etiam platea ac, phasellus, vut pulvinar? Dolor! Porta augue. Montes odio dapibus? Elementum augue ultricies quis. Ac ridiculus, aliquam,</p>
+              </li>
+              <li>
+                <p>cum magna diam Duis amagna augue natoque odion nisi sed magna nascetur turpis inet sed parturient cum velit lacus Magna facilisis et cursus montes Turpisinet magnis parturient turpis magna turpis habitasse integ ultricies odion adipiscing eros nisi nunc aliquet lorem ipsum sites dolor esme </p>
+              </li>
+              <li>
+                <p>Massa egestas, odio et arcu egestas egestas integer, urna cras nunc egestas cum magna diam Duis amagna augue natoque odion nisi sed magna nascetur turpis inet sed parturient cum velit lacus Magna facilisis et cursus montes Turpisinet magnis parturient turpis magna turpis habitasse integ ultricies odion adipiscing eros nisi nunc aliquet lorem ipsum sites dolor esme </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="row">
+        <div class="columns large-12 footer-inner">
+          <div class="row">
+            <div class="columns large-3 box">
+              <div class="">
+                <h2 class="footer-title">Resources</h2>
+                <ul>
+                  <li><a href="index.html">home</a></li>
+                  <li><a href="gallery.html">gallery</a></li>
+                  <li><a href="#">faqs</a></li>
+                  <li><a href="contact.html">contact us</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="blog.html">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">links </h2>
+                <ul>
+                  <li><a href="index.html">home</a></li>
+                  <li><a href="gallery.html">gallery</a></li>
+                  <li><a href="#">faqs</a></li>
+                  <li><a href="contact.html">contact us</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="blog.html">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">follow us</h2>
+                <ul>
+                  <li><a href="#" class="media tweeter"></a>Follow us on twitter</li>
+                  <li><a href="#" class="media youtube"></a>Follow us on youtube</li>
+                  <li><a href="#" class="media facebook"></a>Follow us on facebook</li>
+                  <li><a href="#" class="media gmail"></a>Follow us on google plus</li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns large-3 box">
+              <div>
+                <h2 class="footer-title">Contact us</h2>
+                <p>255, Willson Street,Caulfield, 122211, Melbourne</p>
+                <p><b>Tel:</b> (122)3456789, (121)3456079, (121)2341234</p>
+                <p><b>Fax:</b> (121)5647289, (122)34526589</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="credit-row">
+      <div class="row">
+        <div class="columns large-11 credit">&copy; 2045 All rights reserved by <a href="#">DreamzBank.</a> Design by: <a href="http://topwebsitetemplates.org">topwebsitetemplates.org</a></div>
+        <div class="columns large-1"><img src="{% static 'images/toparrow.png' %}" alt="" class="scrollToTop"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/superfish.js' %}"></script>
+<script src="{% static 'js/slider/jquery.flexslider.js' %}"></script>
+<script>
+Modernizr.load({
+    test: Modernizr.placeholder,
+    nope: 'js/placeholder.min.js'
+});
+
+function goToNewPage() {
+    if (document.getElementById('target').value) {
+        window.location.href = document.getElementById('target').value;
+    }
+}
+</script>
+<script>
+$(document).ready(function () {
+    $('ul.sf-menu').superfish({
+        animation: {
+            height: 'show'
+        },
+        delay: 400
+    });
+    $("img.scrollToTop").click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, "slow");
+    });
+    $('.flexslider').flexslider();
+    $('.flexcar').flexslider();
+});
+</script>
+</body>
+</html>
